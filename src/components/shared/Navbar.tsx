@@ -3,8 +3,23 @@ import { Link } from "react-router-dom";
 import { FaCartShopping } from "react-icons/fa6";
 
 const Navbar: React.FC = () => {
+  const navItems = [
+    <li>
+      <Link to="/">Home</Link>
+    </li>,
+
+    <li>
+      <Link to="/products">Products</Link>
+    </li>,
+    <li>
+      <Link to="/about">About us</Link>
+    </li>,
+    <li>
+      <Link to="/contact">Contact us</Link>
+    </li>,
+  ];
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-blue-100">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -27,23 +42,7 @@ const Navbar: React.FC = () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
-            <li>
-              <a>Item 1</a>
-            </li>
-            <li>
-              <a>Parent</a>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a>Item 3</a>
-            </li>
+            {navItems}
           </ul>
         </div>
         <Link to="/" className="text-2xl font-bold">
@@ -51,30 +50,18 @@ const Navbar: React.FC = () => {
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-
-          <li>
-            <Link to="/products">Products</Link>
-          </li>
-          <li>
-            <Link to="/about">About us</Link>
-          </li>
-          <li>
-            <Link to="/contact">Contact us</Link>
-          </li>
-        </ul>
+        <ul className="menu menu-horizontal px-1">{navItems}</ul>
       </div>
       <div className="navbar-end">
         <div className="mr-4">
           <Link to="/cart" className="btn btn-ghost relative">
-            <FaCartShopping className="text-2xl" />
-            <span className="badge absolute top-0 -right-1">0</span>
+            <FaCartShopping className="text-xl text-blue-500" />
+            <span className="badge absolute top-0 -right-1 bg-red-500 text-white">
+              0
+            </span>
           </Link>
         </div>
-        <Link to="/dashboard" className="btn btn-sm">
+        <Link to="/dashboard" className="btn btn-sm myPrimaryBtn">
           Dashboard
         </Link>
       </div>
