@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FaCartShopping } from "react-icons/fa6";
 
 const Navbar: React.FC = () => {
   return (
@@ -56,18 +57,26 @@ const Navbar: React.FC = () => {
           </li>
 
           <li>
-            <Link to="/">Products</Link>
+            <Link to="/products">Products</Link>
           </li>
           <li>
-            <Link to="/">About us</Link>
+            <Link to="/about">About us</Link>
           </li>
           <li>
-            <Link to="/">Contact us</Link>
+            <Link to="/contact">Contact us</Link>
           </li>
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn btn-sm">Dashboard</a>
+        <div className="mr-4">
+          <Link to="/cart" className="btn btn-ghost relative">
+            <FaCartShopping className="text-2xl" />
+            <span className="badge absolute top-0 -right-1">0</span>
+          </Link>
+        </div>
+        <Link to="/dashboard" className="btn btn-sm">
+          Dashboard
+        </Link>
       </div>
     </div>
   );
