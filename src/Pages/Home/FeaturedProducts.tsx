@@ -9,7 +9,7 @@ const FeaturedProducts: React.FC = () => {
   if (isLoading) {
     return <Loading />;
   }
-  console.log(data?.data);
+
   return (
     <div className="my-12">
       <SectionHeader
