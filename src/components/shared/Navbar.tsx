@@ -1,23 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaCartShopping } from "react-icons/fa6";
+import logo from "../../assets/logo.svg";
 
 const Navbar: React.FC = () => {
-  const navItems = [
-    <li>
-      <Link to="/">Home</Link>
-    </li>,
-
-    <li>
-      <Link to="/products">Products</Link>
-    </li>,
-    <li>
-      <Link to="/about">About us</Link>
-    </li>,
-    <li>
-      <Link to="/contact">Contact us</Link>
-    </li>,
-  ];
   return (
     <div className="navbar bg-blue-100">
       <div className="navbar-start">
@@ -42,15 +28,49 @@ const Navbar: React.FC = () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
-            {navItems}
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+
+            <li>
+              <Link to="/products">Products</Link>
+            </li>
+
+            <li>
+              <Link to="/about">About us</Link>
+            </li>
+
+            <li>
+              <Link to="/contact">Contact us</Link>
+            </li>
           </ul>
         </div>
-        <Link to="/" className="text-2xl font-bold">
+        <Link
+          to="/"
+          className="text-2xl font-bold flex items-center justify-center"
+        >
+          <img src={logo} className="size-14" alt="logo" />
           Key<span className="text-blue-500 font-extrabold">H</span>aven
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{navItems}</ul>
+        <ul className="menu menu-horizontal px-1">
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+
+          <li>
+            <Link to="/products">Products</Link>
+          </li>
+
+          <li>
+            <Link to="/about">About us</Link>
+          </li>
+
+          <li>
+            <Link to="/contact">Contact us</Link>
+          </li>
+        </ul>
       </div>
       <div className="navbar-end">
         <div className="mr-4">

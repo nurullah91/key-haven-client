@@ -2,6 +2,9 @@ import { Outlet } from "react-router-dom";
 import Footer from "./components/shared/Footer";
 import Navbar from "./components/shared/Navbar";
 import { Helmet } from "react-helmet-async";
+
+export const serverUrl = "https://key-haven-server.vercel.app";
+
 function App() {
   return (
     <>
