@@ -11,7 +11,7 @@ const FeaturedProducts: React.FC = () => {
   }
   console.log(data?.data);
   return (
-    <div>
+    <div className="my-12">
       <SectionHeader
         title="Featured Keyboard"
         description="Checkout our latest featured products and enjoy your typing with latest mechanical keyboard"

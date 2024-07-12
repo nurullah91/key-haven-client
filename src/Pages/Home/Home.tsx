@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import Container from "../../components/Container";
 import Slider from "../../components/slider/Slider";
 import FeaturedProducts from "./FeaturedProducts";
+import TopBrands from "./TopBrands";
 
 const Home: React.FC = () => {
   return (
@@ -14,6 +15,7 @@ const Home: React.FC = () => {
       <Container>
         <FeaturedProducts />
       </Container>
+      <TopBrands />
     </div>
   );
 };

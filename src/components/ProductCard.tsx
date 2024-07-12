@@ -44,7 +44,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             </p>
             <Link to={`/products/details/${_id}`}>
               {" "}
-              <button className="btn myPrimaryBtn mt-6">View Recipes</button>
+              <button className="btn myPrimaryBtn mt-6">View Details</button>
             </Link>
           </div>
         </div>
