@@ -11,14 +11,15 @@ type ProductCardProps = {
 };
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  const { availableQuantity, title, brand, price, rating, _id } = product;
+  const { availableQuantity, title, brand, price, ratings, _id, image } =
+    product;
   return (
     <div className="">
       <div className="group relative items-center justify-center overflow-hidden cursor-pointer shadow rounded-md">
         <div className="">
           <LazyLoadImage
-            alt={"chef image"}
-            src="https://i.ibb.co/27TWh1m/image-5.jpg"
+            alt={"Product Image"}
+            src={image}
             width="100%"
             height="100%"
             style={{ transitionProperty: "all", transitionDuration: "700ms" }}
@@ -39,9 +40,13 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             <p className="rounded-full text-xl text-white">
               Available Quantity: {availableQuantity}
             </p>
-            <p className="font-bold text-orange-100">
-              <Rating style={{ maxWidth: 150 }} value={3.5} readOnly />
-            </p>
+            <div className="font-bold text-orange-100">
+              <Rating
+                style={{ maxWidth: 150 }}
+                value={ratings ? ratings : 4.5}
+                readOnly
+              />
+            </div>
             <Link to={`/products/details/${_id}`}>
               {" "}
               <button className="btn myPrimaryBtn mt-6">View Details</button>

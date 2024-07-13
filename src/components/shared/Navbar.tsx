@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { FaCartShopping } from "react-icons/fa6";
 import logo from "../../assets/logo.svg";
 
@@ -26,28 +26,48 @@ const Navbar: React.FC = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content bg-blue-100 rounded-box mt-3 w-52 p-2 shadow z-20"
           >
             <li>
-              <Link to="/">Home</Link>
+              <NavLink
+                className={({ isActive }) => (isActive ? "activeRoute" : "")}
+                to="/"
+              >
+                Home
+              </NavLink>
             </li>
 
             <li>
-              <Link to="/products">Products</Link>
+              <NavLink
+                className={({ isActive }) => (isActive ? "activeRoute" : "")}
+                to="/products"
+              >
+                Products
+              </NavLink>
             </li>
 
             <li>
-              <Link to="/about">About us</Link>
+              <NavLink
+                className={({ isActive }) => (isActive ? "activeRoute" : "")}
+                to="/about"
+              >
+                About us
+              </NavLink>
             </li>
 
             <li>
-              <Link to="/contact">Contact us</Link>
+              <NavLink
+                className={({ isActive }) => (isActive ? "activeRoute" : "")}
+                to="/contact"
+              >
+                Contact us
+              </NavLink>
             </li>
           </ul>
         </div>
         <Link
-          to="/"
           className="text-2xl font-bold flex items-center justify-center"
+          to="/"
         >
           <img src={logo} className="size-14" alt="logo" />
           Key<span className="text-blue-500 font-extrabold">H</span>aven
@@ -56,19 +76,39 @@ const Navbar: React.FC = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <Link to="/">Home</Link>
+            <NavLink
+              className={({ isActive }) => (isActive ? "activeRoute" : "")}
+              to="/"
+            >
+              Home
+            </NavLink>
           </li>
 
           <li>
-            <Link to="/products">Products</Link>
+            <NavLink
+              className={({ isActive }) => (isActive ? "activeRoute" : "")}
+              to="/products"
+            >
+              Products
+            </NavLink>
           </li>
 
           <li>
-            <Link to="/about">About us</Link>
+            <NavLink
+              className={({ isActive }) => (isActive ? "activeRoute" : "")}
+              to="/about"
+            >
+              About us
+            </NavLink>
           </li>
 
           <li>
-            <Link to="/contact">Contact us</Link>
+            <NavLink
+              className={({ isActive }) => (isActive ? "activeRoute" : "")}
+              to="/contact"
+            >
+              Contact us
+            </NavLink>
           </li>
         </ul>
       </div>

@@ -5,3 +5,7 @@
 .myPrimaryBtn {
   @apply bg-blue-500 text-white hover:bg-blue-300 hover:text-slate-800 transition-all duration-300;
 }
+
+.activeRoute {
+  @apply border-b-2 border-blue-500;
+}

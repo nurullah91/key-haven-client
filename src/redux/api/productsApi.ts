@@ -7,7 +7,7 @@ export type TProduct = {
   brand: string;
   availableQuantity: number;
   price: number;
-  rating: number;
+  ratings: number;
   description: string;
   isDeleted?: boolean;
 };
@@ -18,9 +18,17 @@ export type TQueryParams = {
   page?: number;
 };
 
-type TServerResponse = {
+type TServerResponseForAllProduct = {
   success: boolean;
   data: TProduct[];
+  statusCode: number;
+  totalProducts: number;
+  message: string;
+};
+
+type TServerResponseForSingleProduct = {
+  success: boolean;
+  data: TProduct;
   statusCode: number;
   message: string;
 };
@@ -35,7 +43,7 @@ const productsApi = baseApi.injectEndpoints({
       }),
     }),
 
-    getAllProducts: builder.query<TServerResponse, TQueryParams>({
+    getAllProducts: builder.query<TServerResponseForAllProduct, TQueryParams>({
       query: ({ limit, page, search }) => {
         const params = [];
         if (limit) params.push(`limit=${limit}`);
@@ -49,7 +57,18 @@ const productsApi = baseApi.injectEndpoints({
         };
       },
     }),
+
+    getSingleProduct: builder.query<TServerResponseForSingleProduct, string>({
+      query: (id) => ({
+        url: `/products/${id}`,
+        method: "GET",
+      }),
+    }),
   }),
 });
 
-export const { useGetAllProductsQuery, useCreateProductMutation } = productsApi;
+export const {
+  useGetAllProductsQuery,
+  useCreateProductMutation,
+  useGetSingleProductQuery,
+} = productsApi;
