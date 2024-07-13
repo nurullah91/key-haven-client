@@ -1,6 +1,7 @@
 import { baseApi } from "./baseApi";
 
 export type TReview = {
+  _id: string;
   name: string;
   email: string;
   location: string;

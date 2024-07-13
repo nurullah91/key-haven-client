@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Container from "../../components/Container";
 
 const Error: React.FC = () => {
   return (
@@ -13,7 +12,7 @@ const Error: React.FC = () => {
           an error occurred
         </h1>
 
-        <Link to="/" className="btn btn-primary">
+        <Link to="/" className="btn myPrimaryBtn">
           Go to Home
         </Link>
       </div>
