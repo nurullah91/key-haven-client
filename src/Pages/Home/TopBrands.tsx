@@ -2,14 +2,17 @@ import React from "react";
 import SectionHeader from "../../components/SectionHeader";
 import Marquee from "react-fast-marquee";
 import { brandInfo } from "./brandInfo";
+import Container from "../../components/Container";
 
 const TopBrands: React.FC = () => {
   return (
     <div className="my-12">
-      <SectionHeader
-        title="Top Featured Brands"
-        description="Explore or top featured brands and find your best loving brand to buy a brand new mechanical keyboard for best experience"
-      />
+      <Container>
+        <SectionHeader
+          title="Top Featured Brands"
+          description="Explore the leading brands known for their quality and innovation in the mechanical keyboard world. From established names to rising stars, find your favorite. Elevate your typing experience."
+        />
+      </Container>
       <div className="my-6">
         <Marquee>
           {brandInfo.map((logo, index) => (

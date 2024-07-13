@@ -15,19 +15,18 @@ const Review = () => {
     return <Loading />;
   }
 
-  console.log(data);
   return (
     <div className="my-12">
       <SectionHeader
         title={"Our Customers Review"}
-        description="Check out our customers review thoughts, ratings and experience with as."
+        description="Read testimonials from our satisfied customers who love their new mechanical keyboards. Hear their stories and see why we are the top choice. Join our community of enthusiasts."
       />
 
       <div className="text-white my-6">
         <Swiper pagination={true} modules={[Pagination]} className="mySwiper">
           {data?.data?.map((review) => (
             <SwiperSlide key={review._id}>
-              <div className="md:flex gap-6 border-l-2 border-orange-500">
+              <div className="md:flex gap-6 lg:border-l-4 border-l-2 border-blue-500">
                 <div className="flex flex-col justify-between bg-blue-900 p-10">
                   <div className="text-start">
                     <h1 className="text-9xl">❝</h1>

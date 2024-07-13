@@ -5,6 +5,7 @@ import Slider from "../../components/slider/Slider";
 import FeaturedProducts from "./FeaturedProducts";
 import TopBrands from "./TopBrands";
 import Review from "./Review";
+import OurService from "./OurService";
 
 const Home: React.FC = () => {
   return (
@@ -15,6 +16,7 @@ const Home: React.FC = () => {
       <Slider />
       <Container>
         <FeaturedProducts />
+        <OurService />
         <Review />
       </Container>
       <TopBrands />
