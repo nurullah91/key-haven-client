@@ -22,7 +22,7 @@ const ProductDetails: React.FC = () => {
     availableQuantity,
     brand,
     description,
-
+    image,
     price,
     title,
     ratings,
@@ -45,11 +45,7 @@ const ProductDetails: React.FC = () => {
         <div className="flex gap-4 flex-col md:flex-row my-12">
           <div className="md:w-1/2 w-full">
             {/* Replace placeholder Image url */}
-            <img
-              className="w-full"
-              src="https://i.ibb.co/27TWh1m/image-5.jpg"
-              alt="productImg"
-            />
+            <img className="w-full" src={image} alt="productImg" />
           </div>
           <div className="flex flex-col justify-between">
             <div>

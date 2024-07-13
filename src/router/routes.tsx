@@ -9,6 +9,7 @@ import About from "../Pages/About/About";
 import Contact from "../Pages/Contact/Contact";
 import Products from "../Pages/Products/Products";
 import ProductDetails from "../Pages/ProductDetails/ProductDetails";
+import AddProduct from "../Pages/AddProduct/AddProduct";
 
 const router = createBrowserRouter([
   {
@@ -19,10 +20,6 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-      },
-      {
-        path: "dashboard",
-        element: <Dashboard />,
       },
       {
         path: "cart",
@@ -54,6 +51,21 @@ const router = createBrowserRouter([
       {
         path: "details/:id",
         element: <ProductDetails />,
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: <App />,
+    errorElement: <Error />,
+    children: [
+      {
+        path: "/dashboard",
+        element: <Dashboard />,
+      },
+      {
+        path: "add-product",
+        element: <AddProduct />,
       },
     ],
   },

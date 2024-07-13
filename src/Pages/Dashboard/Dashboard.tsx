@@ -1,5 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
+import Container from "../../components/Container";
+import { Link } from "react-router-dom";
 
 const Dashboard: React.FC = () => {
   return (
@@ -7,9 +9,17 @@ const Dashboard: React.FC = () => {
       <Helmet>
         <title>Key Haven | Dashboard</title>
       </Helmet>
-      <h1 className="text-center font-bold text-3xl py-8 bg-blue-100">
-        This is Dashboard page
-      </h1>
+      <Container>
+        <div className="flex flex-col justify-between min-h-[calc(100vh-100px)]">
+          <div>Product management</div>
+          <Link
+            to="/dashboard/add-product"
+            className="btn btn-block myPrimaryBtn"
+          >
+            Add a Product
+          </Link>
+        </div>
+      </Container>
     </div>
   );
 };

@@ -23,13 +23,28 @@ const Slider: React.FC = () => {
         className="mySwiper"
       >
         <SwiperSlide>
-          <img src="https://i.ibb.co/xh1WWf3/image-3.jpg" alt="sliderImage" />
+          <img
+            src="https://i.ibb.co/j6xZggr/pexels-rdne-7915228-1.jpg"
+            alt="sliderImage"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://i.ibb.co/fMF2LQr/image-1.jpg" alt="sliderImage" />
+          <img
+            src="https://i.ibb.co/0K6xJd9/jay-zhang-J10-Tawz-EW6-Q-unsplash-1.jpg"
+            alt="sliderImage"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="https://i.ibb.co/02CzLDw/image-2.jpg" alt="sliderImage" />
+          <img
+            src="https://i.ibb.co/2gf6tdV/michelle-ding-50u-D7-Hz-OLW8-unsplash-1.jpg"
+            alt="sliderImage"
+          />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img
+            src="https://i.ibb.co/VSNjBW1/paul-esch-laurent-8ss-NFn4-VPLg-unsplash-2.jpg"
+            alt="sliderImage"
+          />
         </SwiperSlide>
       </Swiper>
     </div>
