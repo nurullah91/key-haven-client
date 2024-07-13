@@ -14,7 +14,7 @@ type FormValues = {
 };
 
 const ProductForm: React.FC = () => {
-  const [createProduct, { error }] = useCreateProductMutation();
+  const [createProduct] = useCreateProductMutation();
   const {
     register,
     handleSubmit,
@@ -28,12 +28,13 @@ const ProductForm: React.FC = () => {
     data.availableQuantity = Number(data.availableQuantity);
     data.ratings = Number(data.ratings);
     try {
-      const result = await createProduct(data);
-      console.log(result);
-      toast.success("product created successfully", {
-        id: toastId,
-        duration: 2000,
-      });
+      const result = await createProduct(data).unwrap();
+      if (result.success) {
+        toast.success(result.message, {
+          id: toastId,
+          duration: 2000,
+        });
+      }
     } catch (error) {
       toast.error("Something went wrong", { id: toastId, duration: 2000 });
     }

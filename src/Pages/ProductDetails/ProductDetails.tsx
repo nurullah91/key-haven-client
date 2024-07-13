@@ -6,7 +6,7 @@ import Loading from "../../components/Loading";
 import Container from "../../components/Container";
 import { Rating } from "@smastrom/react-rating";
 import { useAppDispatch } from "../../redux/hooks";
-import { addToCart } from "../../redux/features/cart/cartSlice";
+import { addToCart, TCartItem } from "../../redux/features/cart/cartSlice";
 import { toast } from "sonner";
 
 const ProductDetails: React.FC = () => {
@@ -26,12 +26,23 @@ const ProductDetails: React.FC = () => {
     price,
     title,
     ratings,
-    _id,
   } = data!.data;
 
-  const handleCart = (id: string) => {
-    dispatch(addToCart(id));
-    toast.success("Product added to cart");
+  const handleAddToCart = () => {
+    const { _id, title, price } = data!.data;
+    // Assuming you have logic to calculate subtotal based on quantity
+    const quantity = 1; // Example: Initially adding 1 unit
+
+    const newItem: TCartItem = {
+      productId: _id,
+      productTitle: title,
+      quantity,
+      price,
+      subTotal: price * quantity,
+    };
+
+    dispatch(addToCart(newItem));
+    toast.success("Product added to the cart");
   };
   return (
     <div>
@@ -69,7 +80,7 @@ const ProductDetails: React.FC = () => {
                 {description}
               </p>
               <button
-                onClick={() => handleCart(_id)}
+                onClick={() => handleAddToCart()}
                 className="btn btn-block myPrimaryBtn"
               >
                 Add to cart

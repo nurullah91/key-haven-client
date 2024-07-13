@@ -19,12 +19,29 @@ const initialState: TCartState = {
   totalPrice: 0,
   totalQuantity: 0,
 };
+
 export const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
     addToCart: (state, action) => {
-      state.items.push(action.payload);
+      const newItem = action.payload;
+      const existingItem = state.items.find(
+        (item) => item.productId === newItem.productId
+      );
+
+      if (existingItem) {
+        // If item already exists in cart, increase quantity and update subtotal
+        existingItem.quantity += newItem.quantity;
+        existingItem.subTotal += newItem.subTotal;
+      } else {
+        // If item does not exist in cart, add it to the cart items array
+        state.items.push(newItem);
+      }
+
+      // Update total price and quantity in the cart
+      state.totalPrice += newItem.subTotal;
+      state.totalQuantity += newItem.quantity;
     },
   },
 });
