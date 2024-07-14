@@ -2,8 +2,12 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import { FaCartShopping } from "react-icons/fa6";
 import logo from "../../assets/logo.svg";
+import { useAppSelector } from "../../redux/hooks";
+import { totalCartItems } from "../../redux/features/cart/cartSlice";
 
 const Navbar: React.FC = () => {
+  const cartItems = useAppSelector(totalCartItems);
+
   return (
     <div className="navbar bg-blue-100">
       <div className="navbar-start">
@@ -117,7 +121,7 @@ const Navbar: React.FC = () => {
           <Link to="/cart" className="btn btn-ghost relative">
             <FaCartShopping className="text-xl text-blue-500" />
             <span className="badge absolute top-0 -right-1 bg-red-500 text-white">
-              0
+              {cartItems}
             </span>
           </Link>
         </div>

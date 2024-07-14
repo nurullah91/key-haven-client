@@ -29,20 +29,26 @@ const ProductDetails: React.FC = () => {
   } = data!.data;
 
   const handleAddToCart = () => {
-    const { _id, title, price } = data!.data;
+    const { _id, title, price, brand, image } = data!.data;
     // Assuming you have logic to calculate subtotal based on quantity
     const quantity = 1; // Example: Initially adding 1 unit
 
     const newItem: TCartItem = {
       productId: _id,
       productTitle: title,
+      brand,
+      image,
       quantity,
       price,
       subTotal: price * quantity,
     };
 
     dispatch(addToCart(newItem));
-    toast.success("Product added to the cart");
+    const toastId = toast.loading("Adding product");
+    toast.success("Product added to the cart", {
+      id: toastId,
+      duration: 1000,
+    });
   };
   return (
     <div>

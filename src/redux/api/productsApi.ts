@@ -41,8 +41,23 @@ const productsApi = baseApi.injectEndpoints({
         method: "POST",
         body: product,
       }),
+      invalidatesTags: ["products"],
     }),
-
+    updateProduct: builder.mutation({
+      query: (productInfo) => ({
+        url: `/products/${productInfo._id}`,
+        method: "PUT",
+        body: productInfo.product,
+      }),
+      invalidatesTags: ["products"],
+    }),
+    deleteProduct: builder.mutation({
+      query: (id: string) => ({
+        url: `/products/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["products"],
+    }),
     getAllProducts: builder.query<TServerResponseForAllProduct, TQueryParams>({
       query: ({ limit, page, search }) => {
         const params = [];
@@ -56,6 +71,7 @@ const productsApi = baseApi.injectEndpoints({
           method: "GET",
         };
       },
+      providesTags: ["products"],
     }),
 
     getSingleProduct: builder.query<TServerResponseForSingleProduct, string>({
@@ -63,6 +79,7 @@ const productsApi = baseApi.injectEndpoints({
         url: `/products/${id}`,
         method: "GET",
       }),
+      providesTags: ["products"],
     }),
   }),
 });
@@ -71,4 +88,6 @@ export const {
   useGetAllProductsQuery,
   useCreateProductMutation,
   useGetSingleProductQuery,
+  useDeleteProductMutation,
+  useUpdateProductMutation,
 } = productsApi;

@@ -1,8 +1,11 @@
 import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { useCreateProductMutation } from "../../redux/api/productsApi";
+import {
+  useGetSingleProductQuery,
+  useUpdateProductMutation,
+} from "../../redux/api/productsApi";
 import { toast } from "sonner";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 type FormValues = {
   title: string;
@@ -14,8 +17,11 @@ type FormValues = {
   image: string;
 };
 
-const ProductForm: React.FC = () => {
-  const [createProduct] = useCreateProductMutation();
+const UpdateProduct: React.FC = () => {
+  const { id } = useParams();
+  const [updateProduct] = useUpdateProductMutation();
+  const { data } = useGetSingleProductQuery(id as string);
+
   const navigate = useNavigate();
   const {
     register,
@@ -29,8 +35,13 @@ const ProductForm: React.FC = () => {
     data.price = Number(data.price);
     data.availableQuantity = Number(data.availableQuantity);
     data.ratings = Number(data.ratings);
+
+    const productInfo = {
+      _id: id,
+      product: data,
+    };
     try {
-      const result = await createProduct(data).unwrap();
+      const result = await updateProduct(productInfo).unwrap();
       if (result.success) {
         toast.success(result.message, {
           id: toastId,
@@ -49,7 +60,7 @@ const ProductForm: React.FC = () => {
         onSubmit={handleSubmit(onSubmit)}
         className="max-w-3xl mx-auto p-6 shadow-lg rounded-md bg-white"
       >
-        <h2 className="text-2xl font-bold mb-6">Add Product</h2>
+        <h2 className="text-2xl font-bold mb-6">Update a Product</h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <div>
             <label
@@ -62,6 +73,7 @@ const ProductForm: React.FC = () => {
               id="title"
               {...register("title", { required: "Title is required" })}
               className="mt-1 p-2 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md"
+              defaultValue={data?.data.title}
             />
             {errors.title && (
               <p className="text-red-500 text-xs">{errors.title.message}</p>
@@ -79,6 +91,7 @@ const ProductForm: React.FC = () => {
               id="brand"
               {...register("brand", { required: "Brand is required" })}
               className="mt-1 p-2 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md"
+              defaultValue={data?.data.brand}
             />
             {errors.brand && (
               <p className="text-red-500 text-xs">{errors.brand.message}</p>
@@ -99,6 +112,7 @@ const ProductForm: React.FC = () => {
                 required: "Available Quantity is required",
               })}
               className="mt-1 p-2 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md"
+              defaultValue={data?.data.availableQuantity}
             />
             {errors.availableQuantity && (
               <p className="text-red-500 text-xs">
@@ -119,6 +133,7 @@ const ProductForm: React.FC = () => {
               id="price"
               {...register("price", { required: "Price is required" })}
               className="mt-1 p-2 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md"
+              defaultValue={data?.data.price}
             />
             {errors.price && (
               <p className="text-red-500 text-xs">{errors.price.message}</p>
@@ -142,6 +157,7 @@ const ProductForm: React.FC = () => {
                 max: { value: 5, message: "Maximum rating is 5" },
               })}
               className="mt-1 p-2 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md"
+              defaultValue={data?.data.ratings}
             />
             {errors.ratings && (
               <p className="text-red-500 text-xs">{errors.ratings.message}</p>
@@ -159,6 +175,7 @@ const ProductForm: React.FC = () => {
               id="image"
               {...register("image", { required: "Image URL is required" })}
               className="mt-1 p-2 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md"
+              defaultValue={data?.data.image}
             />
             {errors.image && (
               <p className="text-red-500 text-xs">{errors.image.message}</p>
@@ -178,6 +195,7 @@ const ProductForm: React.FC = () => {
                 required: "Description is required",
               })}
               className="mt-1 p-2 block w-full shadow-sm sm:text-sm border border-gray-300 rounded-md"
+              defaultValue={data?.data.description}
             />
             {errors.description && (
               <p className="text-red-500 text-xs">
@@ -191,11 +209,11 @@ const ProductForm: React.FC = () => {
           type="submit"
           className="mt-6 w-full py-2 px-4 bg-blue-500 text-white font-semibold rounded-md shadow hover:bg-blue-700"
         >
-          Add Product
+          Update Product
         </button>
       </form>
     </div>
   );
 };
 
-export default ProductForm;
+export default UpdateProduct;

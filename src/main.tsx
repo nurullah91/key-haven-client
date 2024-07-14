@@ -7,12 +7,14 @@ import router from "./router/routes.tsx";
 import { RouterProvider } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { Toaster } from "sonner";
+import ReloadWarning from "./components/ReloadWarning.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <HelmetProvider>
       <Toaster position="top-center" richColors />
       <Provider store={store}>
+        <ReloadWarning />
         <RouterProvider router={router} />
       </Provider>
     </HelmetProvider>
